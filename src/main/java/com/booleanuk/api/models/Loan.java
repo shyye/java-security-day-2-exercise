@@ -15,12 +15,12 @@ public class Loan {
     private int id;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference
     private User user;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "item_id", nullable = false)
     @JsonBackReference
     private Item item;
 }
