@@ -1,8 +1,11 @@
 package com.booleanuk.api.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -29,4 +32,15 @@ public class Item {
 
     @Column(name = "year")
     private String year;
+
+    @Column(name = "isBorrowed")
+    private Boolean isBorrowed = false;
+
+    public Item(int id) {
+        this.id = id;
+    }
+
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonManagedReference(value = "item-loans")
+    private List<Loan> loans;
 }

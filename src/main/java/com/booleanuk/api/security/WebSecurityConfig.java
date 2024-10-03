@@ -63,7 +63,8 @@ public class WebSecurityConfig {
 //                        .requestMatchers(HttpMethod.POST, "/loans/create", "/loans/return").authenticated()
 //                        .requestMatchers(HttpMethod.GET, "/loans/myLoans", "/loans/myHistory").authenticated()
                         .requestMatchers(HttpMethod.GET, "/loans/myLoans", "/loans/myHistory").hasRole("USER")
-                        .requestMatchers(HttpMethod.POST, "/loans/create", "/loans/return").hasRole("USER")
+                        .requestMatchers(HttpMethod.POST, "/loans/create").hasRole("USER")
+                        .requestMatchers(HttpMethod.PUT, "/loans/return/**").hasRole("USER")
                         .requestMatchers("/loans", "/loans/**").hasRole("ADMIN")
                 );
         http.authenticationProvider(authenticationProvider());
