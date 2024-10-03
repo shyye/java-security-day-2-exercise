@@ -29,6 +29,8 @@ public class LoanController {
     @Autowired
     private ItemRepository itemRepository;
 
+    // FOR ADMIN
+    // Get all loans and see corresponding user/item
     @GetMapping
     public ResponseEntity<LoanListResponse> getAll() {
         LoanListResponse response = new LoanListResponse();
@@ -36,6 +38,7 @@ public class LoanController {
         return ResponseEntity.ok(response);
     }
 
+    // FOR USERS
     // Get current loans
     @GetMapping("myLoans")
     public ResponseEntity<LoanListResponse> getMyLoans() {
@@ -52,6 +55,7 @@ public class LoanController {
         return ResponseEntity.ok(response);
     }
 
+    // Borrow an item
     @PostMapping("create")
     public ResponseEntity<Response<?>> create(@RequestBody Loan loan) {
         LoanResponse response = new LoanResponse();
@@ -122,10 +126,6 @@ public class LoanController {
         response.set(loan);
         return ResponseEntity.ok(response);
     }
-
-
-
-
 
     // Get the logged in user
     private User getLoggedInUser() {

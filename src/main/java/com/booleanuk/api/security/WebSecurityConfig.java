@@ -60,8 +60,6 @@ public class WebSecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/items", "/items/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/items", "/items/**").hasRole("ADMIN")
 
-//                        .requestMatchers(HttpMethod.POST, "/loans/create", "/loans/return").authenticated()
-//                        .requestMatchers(HttpMethod.GET, "/loans/myLoans", "/loans/myHistory").authenticated()
                         .requestMatchers(HttpMethod.GET, "/loans/myLoans", "/loans/myHistory").hasRole("USER")
                         .requestMatchers(HttpMethod.POST, "/loans/create").hasRole("USER")
                         .requestMatchers(HttpMethod.PUT, "/loans/return/**").hasRole("USER")

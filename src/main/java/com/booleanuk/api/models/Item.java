@@ -1,6 +1,5 @@
 package com.booleanuk.api.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -41,6 +40,5 @@ public class Item {
     }
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JsonManagedReference(value = "item-loans")
     private List<Loan> loans;
 }
